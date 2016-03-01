@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ChubbyMobile</string>
+    <string name="action_settings">Settings</string>
+    <string name="ok">Refresh Time</string>
+    <string name="goDraw">Draw View</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="promptBtn">Dialog</string>
+    <string name="listBtn">Choice</string>
+</resources>
