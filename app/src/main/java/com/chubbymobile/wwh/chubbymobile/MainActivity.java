@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
+    //initilize data
     int[] images = new int[]{
             R.drawable.angry,
             R.drawable.sad,
