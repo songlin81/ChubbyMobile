@@ -7,4 +7,7 @@
     <string name="promptBtn">Dialog</string>
     <string name="listBtn">Choice</string>
     <string name="title_activity_database">DatabaseActivity</string>
+    <string name="goWebView">Go Web</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="SQLiteDB">SQLiteDB</string>
 </resources>

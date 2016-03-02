@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.chubbymobile.wwh.chubbymobile" >
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -26,6 +28,11 @@
         <activity
             android:name=".DatabaseActivity"
             android:label="@string/title_activity_database"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:label="@string/title_activity_web_view"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>

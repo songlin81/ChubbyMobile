@@ -66,6 +66,7 @@ public class MainActivity extends Activity {
 
                 intent.putExtra("et1", show.getText());
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -123,13 +124,26 @@ public class MainActivity extends Activity {
         });
 
         Button btnToDB = new Button(this);
-        btnToDB.setText(R.string.goDraw);
+        btnToDB.setText(R.string.SQLiteDB);
         btnToDB.setGravity(Gravity.CENTER);
         btnToDB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DatabaseActivity.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        Button btnToWebView = new Button(this);
+        btnToWebView.setText(R.string.goWebView);
+        btnToWebView.setGravity(Gravity.CENTER);
+        btnToWebView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -140,5 +154,6 @@ public class MainActivity extends Activity {
         main.addView(btnGeneral);
         main.addView(btnListViewMulti);
         main.addView(btnToDB);
+        main.addView(btnToWebView);
     }
 }
