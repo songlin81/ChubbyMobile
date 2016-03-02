@@ -124,11 +124,23 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToDB = new Button(this);
+        btnToDB.setText(R.string.goDraw);
+        btnToDB.setGravity(Gravity.CENTER);
+        btnToDB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DatabaseActivity.class);
+                startActivity(intent);
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
         main.addView(btnToSub);
         main.addView(btnGeneral);
         main.addView(btnListViewMulti);
+        main.addView(btnToDB);
     }
 }
