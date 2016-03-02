@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-    //initilize data
     int[] images = new int[]{
             R.drawable.angry,
             R.drawable.sad,
@@ -64,8 +63,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 show.setText("Current time: " + new java.util.Date());
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
-
-                //Transfer data bag across activity
+                
                 intent.putExtra("et1", show.getText());
                 startActivity(intent);
             }
