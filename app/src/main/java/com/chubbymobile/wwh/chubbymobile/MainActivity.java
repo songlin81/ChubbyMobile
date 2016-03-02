@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 show.setText("Current time: " + new java.util.Date());
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
-                
+
                 intent.putExtra("et1", show.getText());
                 startActivity(intent);
             }

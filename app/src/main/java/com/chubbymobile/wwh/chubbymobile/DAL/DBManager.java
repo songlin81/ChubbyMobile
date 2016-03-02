@@ -19,10 +19,6 @@ public class DBManager {
         db = helper.getWritableDatabase();
     }
 
-    /**
-     * add persons
-     * @param persons
-     */
     public void add(List<Person> persons) {
         db.beginTransaction();  //开始事务
         try {
@@ -35,28 +31,20 @@ public class DBManager {
         }
     }
 
-    /**
-     * update person's age
-     * @param person
-     */
-    public void updateAge(Person person) {
+    public int updateAge(Person person) {
         ContentValues cv = new ContentValues();
         cv.put("age", person.age);
-        db.update("person", cv, "name = ?", new String[]{person.name});
+        return db.update("person", cv, "name = ?", new String[]{person.name});
     }
 
-    /**
-     * delete old person
-     * @param person
-     */
-    public void deleteOldPerson(Person person) {
-        db.delete("person", "age >= ?", new String[]{String.valueOf(person.age)});
+    public int deleteOldPerson(Person person) {
+        return db.delete("person", "age >= ?", new String[]{String.valueOf(person.age)});
     }
 
-    /**
-     * query all persons, return list
-     * @return List<Person>
-     */
+    public int deleteAllPersons() {
+        return db.delete("person", null, null);
+    }
+
     public List<Person> query() {
         ArrayList<Person> persons = new ArrayList<Person>();
         Cursor c = queryTheCursor();
@@ -72,18 +60,11 @@ public class DBManager {
         return persons;
     }
 
-    /**
-     * query all persons, return cursor
-     * @return  Cursor
-     */
     public Cursor queryTheCursor() {
         Cursor c = db.rawQuery("SELECT * FROM person", null);
         return c;
     }
 
-    /**
-     * close database
-     */
     public void closeDB() {
         db.close();
     }

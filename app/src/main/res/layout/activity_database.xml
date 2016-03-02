@@ -8,29 +8,28 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="add"
-        android:onClick="add"
         android:id="@+id/addBtn"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="update"
-        android:onClick="update"/>
+        android:id="@+id/updateBtn"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="delete"
-        android:onClick="delete"/>
+        android:id="@+id/deleteBtn"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="query"
-        android:onClick="query"
         android:id="@+id/queryBtn"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="queryTheCursor"
-        android:onClick="queryTheCursor"/>
+        android:text="Purge All"
+        android:onClick="PurgeAll"
+        android:id="@+id/removeBtn"/>
     <ListView
         android:id="@+id/listView"
         android:layout_width="fill_parent"
