@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.content.Intent;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 public class SubActivity extends Activity {
 
@@ -29,4 +31,12 @@ public class SubActivity extends Activity {
         root.addView(draw);
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode== KeyEvent.KEYCODE_BACK) {
+            Toast.makeText(SubActivity.this, "选择了--->>" + keyCode, Toast.LENGTH_SHORT).show();
+            //return false;   //this will stop propagation.
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
