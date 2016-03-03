@@ -34,8 +34,6 @@ public class SubActivity extends Activity {
         SharedPreferences.Editor mEditor = mSharedPreferences.edit();
         mEditor.putInt("counter", ++counter);
         mEditor.commit();
-        //preftv = (TextView) findViewById(R.id.preferenceValue);
-        //tv.setText("Current time:" + String.valueOf(""));
 
         final DrawView draw = new DrawView(this);
         draw.setMinimumWidth(300);

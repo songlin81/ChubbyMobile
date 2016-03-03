@@ -10,4 +10,11 @@
     <string name="goWebView">Go Web</string>
     <string name="title_activity_web_view">WebViewActivity</string>
     <string name="SQLiteDB">SQLiteDB</string>
+    <string name="num1">No. 1</string>
+    <string name="num2">No. 2</string>
+    <string name="title_activity_fragment_page">FragmentPage</string>
+    <string name="btn1">Button One</string>
+    <string name="btn2">Button Two</string>
+    <string name="btn3">Button Three</string>
+    <string name="goFragment">Go Fragment</string>
 </resources>

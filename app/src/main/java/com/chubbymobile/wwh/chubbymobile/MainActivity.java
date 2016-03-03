@@ -147,6 +147,18 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToFragment = new Button(this);
+        btnToFragment.setText(R.string.goFragment);
+        btnToFragment.setGravity(Gravity.CENTER);
+        btnToFragment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FragmentPage.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
@@ -155,5 +167,6 @@ public class MainActivity extends Activity {
         main.addView(btnListViewMulti);
         main.addView(btnToDB);
         main.addView(btnToWebView);
+        main.addView(btnToFragment);
     }
 }

@@ -35,6 +35,11 @@
             android:label="@string/title_activity_web_view"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".FragmentPage"
+            android:label="@string/title_activity_fragment_page"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
