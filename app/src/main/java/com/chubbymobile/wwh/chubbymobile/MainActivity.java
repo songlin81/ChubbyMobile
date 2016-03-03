@@ -159,6 +159,18 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToImage = new Button(this);
+        btnToImage.setText(R.string.goImage);
+        btnToImage.setGravity(Gravity.CENTER);
+        btnToImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ImageActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
@@ -168,5 +180,6 @@ public class MainActivity extends Activity {
         main.addView(btnToDB);
         main.addView(btnToWebView);
         main.addView(btnToFragment);
+        main.addView(btnToImage);
     }
 }

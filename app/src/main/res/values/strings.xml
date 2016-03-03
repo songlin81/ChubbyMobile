@@ -17,4 +17,6 @@
     <string name="btn2">Button Two</string>
     <string name="btn3">Button Three</string>
     <string name="goFragment">Go Fragment</string>
+    <string name="title_activity_image">ImageActivity</string>
+    <string name="goImage">Go Image</string>
 </resources>

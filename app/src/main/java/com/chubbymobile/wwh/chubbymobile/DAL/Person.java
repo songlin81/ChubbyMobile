@@ -1,8 +1,5 @@
 package com.chubbymobile.wwh.chubbymobile.DAL;
 
-/**
- * Created by wwh on 16/3/2.
- */
 public class Person{
     public int _id;
     public String name;
