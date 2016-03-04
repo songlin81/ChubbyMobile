@@ -31,7 +31,7 @@ public class MVPActivity extends Activity implements IShowUserView {
         age_tv = (TextView) findViewById(R.id.age_tv);
         sex_tv = (TextView) findViewById(R.id.sex_tv);
         pd = new ProgressDialog(this);
-        pd.setMessage("正在加载……");
+        pd.setMessage("Loading……");
 
         btn.setOnClickListener(new View.OnClickListener() {
 
@@ -61,7 +61,7 @@ public class MVPActivity extends Activity implements IShowUserView {
 
     @Override
     public void showFailedError() {
-        Toast.makeText(this, "获取信息有误", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Failure occurred.", Toast.LENGTH_SHORT).show();
     }
 
     @Override
