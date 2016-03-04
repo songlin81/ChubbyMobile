@@ -20,14 +20,14 @@ public class DBManager {
     }
 
     public void add(List<Person> persons) {
-        db.beginTransaction();  //开始事务
+        db.beginTransaction();
         try {
             for (Person person : persons) {
                 db.execSQL("INSERT INTO person VALUES(null, ?, ?, ?)", new Object[]{person.name, person.age, person.info});
             }
-            db.setTransactionSuccessful();  //设置事务成功完成
+            db.setTransactionSuccessful();
         } finally {
-            db.endTransaction();    //结束事务
+            db.endTransaction();
         }
     }
 
