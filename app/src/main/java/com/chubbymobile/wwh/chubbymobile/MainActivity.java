@@ -29,7 +29,6 @@ public class MainActivity extends Activity {
     };
     int currentImg = 0;
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
-
     MediaPlayer mMediaPlayer;
 
     @Override
@@ -233,6 +232,23 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToGridView = new Button(this);
+        btnToGridView.setText(R.string.goGridView);
+        btnToGridView.setGravity(Gravity.CENTER);
+        btnToGridView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, GridViewActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
@@ -246,5 +262,6 @@ public class MainActivity extends Activity {
         main.addView(btnToSound);
         main.addView(btnToSoundStop);
         main.addView(btnToMVP);
+        main.addView(btnToGridView);
     }
 }

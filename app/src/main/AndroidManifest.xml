@@ -50,6 +50,11 @@
             android:label="@string/title_activity_mvp"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".GridViewActivity"
+            android:label="@string/title_activity_grid_view"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

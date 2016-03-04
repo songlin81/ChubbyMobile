@@ -23,4 +23,6 @@
     <string name="stopSound">Stop Ringtong</string>
     <string name="title_activity_mvp">MVPActivity</string>
     <string name="goMVP">Go MVP</string>
+    <string name="title_activity_grid_view">GridViewActivity</string>
+    <string name="goGridView">Go GridView</string>
 </resources>
