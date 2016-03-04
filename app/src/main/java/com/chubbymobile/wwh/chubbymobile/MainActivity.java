@@ -1,6 +1,10 @@
 package com.chubbymobile.wwh.chubbymobile;
 
 import android.app.Activity;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -25,6 +29,8 @@ public class MainActivity extends Activity {
     };
     int currentImg = 0;
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
+
+    MediaPlayer mMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +177,62 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToSound = new Button(this);
+        btnToSound.setText(R.string.goSound);
+        btnToSound.setGravity(Gravity.CENTER);
+        btnToSound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    if(mMediaPlayer==null)
+                        mMediaPlayer = new MediaPlayer();
+                    else
+                        mMediaPlayer.reset();
+                    Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+                    mMediaPlayer.setDataSource( MainActivity.this, alert);
+                    //final AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+                    mMediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
+                    mMediaPlayer.setLooping(true);
+                    mMediaPlayer.prepare();
+                    mMediaPlayer.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Button btnToSoundStop = new Button(this);
+        btnToSoundStop.setText(R.string.stopSound);
+        btnToSoundStop.setGravity(Gravity.CENTER);
+        btnToSoundStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    mMediaPlayer.stop();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        Button btnToMVP = new Button(this);
+        btnToMVP.setText(R.string.goMVP);
+        btnToMVP.setGravity(Gravity.CENTER);
+        btnToMVP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, MVPActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
@@ -181,5 +243,8 @@ public class MainActivity extends Activity {
         main.addView(btnToWebView);
         main.addView(btnToFragment);
         main.addView(btnToImage);
+        main.addView(btnToSound);
+        main.addView(btnToSoundStop);
+        main.addView(btnToMVP);
     }
 }

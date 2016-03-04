@@ -19,4 +19,8 @@
     <string name="goFragment">Go Fragment</string>
     <string name="title_activity_image">ImageActivity</string>
     <string name="goImage">Go Image</string>
+    <string name="goSound">Go Sound</string>
+    <string name="stopSound">Stop Ringtong</string>
+    <string name="title_activity_mvp">MVPActivity</string>
+    <string name="goMVP">Go MVP</string>
 </resources>
