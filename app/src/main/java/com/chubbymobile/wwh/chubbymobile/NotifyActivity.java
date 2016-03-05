@@ -37,7 +37,7 @@ public class NotifyActivity extends Activity {
                 myNotify.when = System.currentTimeMillis();
                 myNotify.flags = Notification.FLAG_AUTO_CANCEL; //FLAG_NO_CLEAR;// 不能够自动清除
                 RemoteViews rv = new RemoteViews(getPackageName(), R.layout.my_notification);
-                rv.setTextViewText(R.id.text_content, "hello wrold!");
+                rv.setTextViewText(R.id.text_content, "Notice arrived!");
                 myNotify.contentView = rv;
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 PendingIntent contentIntent = PendingIntent.getActivity(this, 1, intent, 1);
