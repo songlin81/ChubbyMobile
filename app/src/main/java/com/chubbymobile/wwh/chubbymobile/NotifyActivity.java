@@ -26,7 +26,6 @@ public class NotifyActivity extends Activity {
     }
 
     public void notificationMethod(View view) {
-        // 在Android进行通知处理，首先需要重系统哪里获得通知管理器NotificationManager，它是一个系统Service。
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         switch (view.getId()) {
             case R.id.btn4:
