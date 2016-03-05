@@ -1,5 +1,6 @@
 package com.chubbymobile.wwh.chubbymobile;
 
+import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -14,7 +15,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RemoteViews;
 
-public class NotifyActivity extends AppCompatActivity {
+public class NotifyActivity extends Activity {
 
     private static final int NOTIFICATION_FLAG = 1;
 
