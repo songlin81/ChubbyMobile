@@ -249,6 +249,23 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToNotification = new Button(this);
+        btnToNotification.setText(R.string.goNotification);
+        btnToNotification.setGravity(Gravity.CENTER);
+        btnToNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, NotifyActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
@@ -263,5 +280,6 @@ public class MainActivity extends Activity {
         main.addView(btnToSoundStop);
         main.addView(btnToMVP);
         main.addView(btnToGridView);
+        main.addView(btnToNotification);
     }
 }

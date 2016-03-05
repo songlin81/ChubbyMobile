@@ -25,4 +25,6 @@
     <string name="goMVP">Go MVP</string>
     <string name="title_activity_grid_view">GridViewActivity</string>
     <string name="goGridView">Go GridView</string>
+    <string name="title_activity_notify">NotifyActivity</string>
+    <string name="goNotification">Go Notification</string>
 </resources>
