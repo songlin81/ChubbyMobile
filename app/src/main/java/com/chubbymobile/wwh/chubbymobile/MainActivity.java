@@ -266,6 +266,23 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btnToGridMenu = new Button(this);
+        btnToGridMenu.setText(R.string.goGridMenu);
+        btnToGridMenu.setGravity(Gravity.CENTER);
+        btnToGridMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, GridViewMenuActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
         main.addView(image);
         main.addView(show);
         main.addView(btn);
@@ -281,5 +298,6 @@ public class MainActivity extends Activity {
         main.addView(btnToMVP);
         main.addView(btnToGridView);
         main.addView(btnToNotification);
+        main.addView(btnToGridMenu);
     }
 }

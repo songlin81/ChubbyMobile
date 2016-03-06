@@ -27,4 +27,6 @@
     <string name="goGridView">Go GridView</string>
     <string name="title_activity_notify">NotifyActivity</string>
     <string name="goNotification">Go Notification</string>
+    <string name="title_activity_grid_view_menu">GridViewMenuActivity</string>
+    <string name="goGridMenu">Go Grid Menu</string>
 </resources>

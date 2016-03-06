@@ -60,6 +60,11 @@
             android:label="@string/title_activity_notify"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".GridViewMenuActivity"
+            android:label="@string/title_activity_grid_view_menu"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>
