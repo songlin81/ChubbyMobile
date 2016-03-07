@@ -34,23 +34,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Button btn = new Button(this);
-        btn.setText(R.string.ok);
-        btn.setGravity(Gravity.CENTER);
-        final TextView show = new TextView(this);
-        show.setGravity(Gravity.CENTER);
-
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                show.setText("Current time: " + new java.util.Date());
-            }
-        });
-
         setContentView(R.layout.content_main);
         LinearLayout main = (LinearLayout) findViewById(R.id.root);
 
+        //1. click event registered to image view.
         final ImageView image = new ImageView(this);
         image.setImageResource(images[0]);
         image.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +46,24 @@ public class MainActivity extends Activity {
                 image.setImageResource(images[++currentImg % images.length]);
             }
         });
+        main.addView(image);
 
+        //2. click event registered to button.
+        Button btn = new Button(this);
+        btn.setText(R.string.ok);
+        btn.setGravity(Gravity.CENTER);
+        final TextView show = new TextView(this);
+        show.setGravity(Gravity.CENTER);
+        show.setText("Click to display");
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show.setText("Current time: " + new java.util.Date());
+            }
+        });
+        main.addView(btn);
+
+        //3.
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
         btnToSub.setGravity(Gravity.CENTER);
@@ -183,12 +187,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 try {
-                    if(mMediaPlayer==null)
+                    if (mMediaPlayer == null)
                         mMediaPlayer = new MediaPlayer();
                     else
                         mMediaPlayer.reset();
                     Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-                    mMediaPlayer.setDataSource( MainActivity.this, alert);
+                    mMediaPlayer.setDataSource(MainActivity.this, alert);
                     //final AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
                     mMediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
                     mMediaPlayer.setLooping(true);
@@ -283,9 +287,9 @@ public class MainActivity extends Activity {
             }
         });
 
-        main.addView(image);
+        //main.addView(image);
         main.addView(show);
-        main.addView(btn);
+        //main.addView(btn);
         main.addView(btnToSub);
         main.addView(btnGeneral);
         main.addView(btnListViewMulti);
