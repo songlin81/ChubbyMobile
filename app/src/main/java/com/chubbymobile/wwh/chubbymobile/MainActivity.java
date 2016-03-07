@@ -61,9 +61,10 @@ public class MainActivity extends Activity {
                 show.setText("Current time: " + new java.util.Date());
             }
         });
+        main.addView(show);
         main.addView(btn);
 
-        //3.
+        //3. 
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
         btnToSub.setGravity(Gravity.CENTER);
@@ -288,7 +289,7 @@ public class MainActivity extends Activity {
         });
 
         //main.addView(image);
-        main.addView(show);
+        //main.addView(show);
         //main.addView(btn);
         main.addView(btnToSub);
         main.addView(btnGeneral);
