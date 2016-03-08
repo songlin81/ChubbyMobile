@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
         main.addView(show);
         main.addView(btn);
 
-        //3. 
+        //3.
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
         btnToSub.setGravity(Gravity.CENTER);
@@ -288,9 +288,6 @@ public class MainActivity extends Activity {
             }
         });
 
-        //main.addView(image);
-        //main.addView(show);
-        //main.addView(btn);
         main.addView(btnToSub);
         main.addView(btnGeneral);
         main.addView(btnListViewMulti);
@@ -304,5 +301,23 @@ public class MainActivity extends Activity {
         main.addView(btnToGridView);
         main.addView(btnToNotification);
         main.addView(btnToGridMenu);
+
+        Button btnToNavigation = new Button(this);
+        btnToNavigation.setText(R.string.goNavigation);
+        btnToNavigation.setGravity(Gravity.CENTER);
+        btnToNavigation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToNavigation);
     }
 }
