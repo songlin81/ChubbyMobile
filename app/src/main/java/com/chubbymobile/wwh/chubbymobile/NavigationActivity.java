@@ -8,37 +8,28 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class NavigationActivity extends FragmentActivity implements OnClickListener {
 
-    //¶¨Òå3¸öFragmentµÄ¶ÔÏó
     private Fragment1 fg1;
     private Fragment2 fg2;
     private Fragment3 fg3;
-    //Ö¡²¼¾Ö¶ÔÏó,¾ÍÊÇÓÃÀ´´æ·ÅFragmentµÄÈÝÆ÷
-    private FrameLayout flayout;
-    //¶¨Òåµ×²¿µ¼º½À¸µÄÈý¸ö²¼¾Ö
     private RelativeLayout course_layout;
     private RelativeLayout found_layout;
     private RelativeLayout settings_layout;
-    //¶¨Òåµ×²¿µ¼º½À¸ÖÐµÄImageViewÓëTextView
     private ImageView course_image;
     private ImageView found_image;
     private ImageView settings_image;
     private TextView course_text;
     private TextView settings_text;
     private TextView found_text;
-    //¶¨ÒåÒªÓÃµÄÑÕÉ«Öµ
-    private int whirt = 0xFFFFFFFF;
+    private int white = 0xFFFFFFFF;
     private int gray = 0xFF7597B3;
     private int blue =0xFF0AB2FB;
-    //¶¨ÒåFragmentManager¶ÔÏó
     FragmentManager fManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +39,6 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
         initViews();
     }
 
-
-    //Íê³É×é¼þµÄ³õÊ¼»¯
     public void initViews()
     {
         course_image = (ImageView) findViewById(R.id.course_image);
@@ -66,18 +55,17 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
         settings_layout.setOnClickListener(this);
     }
 
-    //ÖØÐ´onClickÊÂ¼þ
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.course_layout:
-                setChioceItem(0);
+                setChoiceItem(0);
                 break;
             case R.id.found_layout:
-                setChioceItem(1);
+                setChoiceItem(1);
                 break;
             case R.id.setting_layout:
-                setChioceItem(2);
+                setChoiceItem(2);
                 break;
             default:
                 break;
@@ -85,13 +73,10 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
 
     }
 
-
-    //¶¨ÒåÒ»¸öÑ¡ÖÐÒ»¸öitemºóµÄ´¦Àí
-    public void setChioceItem(int index)
+    public void setChoiceItem(int index)
     {
-        //ÖØÖÃÑ¡Ïî+Òþ²ØËùÓÐFragment
         FragmentTransaction transaction = fManager.beginTransaction();
-        clearChioce();
+        clearChoice();
         hideFragments(transaction);
         switch (index) {
             case 0:
@@ -99,11 +84,9 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
                 course_text.setTextColor(blue);
                 course_layout.setBackgroundResource(R.drawable.ic_tabbar_bg_click);
                 if (fg1 == null) {
-                    // Èç¹ûfg1Îª¿Õ£¬Ôò´´½¨Ò»¸ö²¢Ìí¼Óµ½½çÃæÉÏ
                     fg1 = new Fragment1();
                     transaction.add(R.id.content, fg1);
                 } else {
-                    // Èç¹ûMessageFragment²»Îª¿Õ£¬ÔòÖ±½Ó½«ËüÏÔÊ¾³öÀ´
                     transaction.show(fg1);
                 }
                 break;
@@ -113,11 +96,9 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
                 found_text.setTextColor(blue);
                 found_layout.setBackgroundResource(R.drawable.ic_tabbar_bg_click);
                 if (fg2 == null) {
-                    // Èç¹ûfg1Îª¿Õ£¬Ôò´´½¨Ò»¸ö²¢Ìí¼Óµ½½çÃæÉÏ
                     fg2 = new Fragment2();
                     transaction.add(R.id.content, fg2);
                 } else {
-                    // Èç¹ûMessageFragment²»Îª¿Õ£¬ÔòÖ±½Ó½«ËüÏÔÊ¾³öÀ´
                     transaction.show(fg2);
                 }
                 break;
@@ -127,11 +108,9 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
                 settings_text.setTextColor(blue);
                 settings_layout.setBackgroundResource(R.drawable.ic_tabbar_bg_click);
                 if (fg3 == null) {
-                    // Èç¹ûfg1Îª¿Õ£¬Ôò´´½¨Ò»¸ö²¢Ìí¼Óµ½½çÃæÉÏ
                     fg3 = new Fragment3();
                     transaction.add(R.id.content, fg3);
                 } else {
-                    // Èç¹ûMessageFragment²»Îª¿Õ£¬ÔòÖ±½Ó½«ËüÏÔÊ¾³öÀ´
                     transaction.show(fg3);
                 }
                 break;
@@ -139,7 +118,6 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
         transaction.commit();
     }
 
-    //Òþ²ØËùÓÐµÄFragment,±ÜÃâfragment»ìÂÒ
     private void hideFragments(FragmentTransaction transaction) {
         if (fg1 != null) {
             transaction.hide(fg1);
@@ -152,18 +130,16 @@ public class NavigationActivity extends FragmentActivity implements OnClickListe
         }
     }
 
-
-    //¶¨ÒåÒ»¸öÖØÖÃËùÓÐÑ¡ÏîµÄ·½·¨
-    public void clearChioce()
+    public void clearChoice()
     {
         course_image.setImageResource(R.drawable.ic_tabbar_course_normal);
-        course_layout.setBackgroundColor(whirt);
+        course_layout.setBackgroundColor(white);
         course_text.setTextColor(gray);
         found_image.setImageResource(R.drawable.ic_tabbar_found_normal);
-        found_layout.setBackgroundColor(whirt);
+        found_layout.setBackgroundColor(white);
         found_text.setTextColor(gray);
         settings_image.setImageResource(R.drawable.ic_tabbar_settings_normal);
-        settings_layout.setBackgroundColor(whirt);
+        settings_layout.setBackgroundColor(white);
         settings_text.setTextColor(gray);
     }
 
