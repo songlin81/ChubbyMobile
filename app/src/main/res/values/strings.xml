@@ -31,4 +31,6 @@
     <string name="goGridMenu">Go Grid Menu</string>
     <string name="title_activity_navigation">NavigationActivity</string>
     <string name="goNavigation">Go Navigation</string>
+    <string name="title_activity_tooth">ToothActivity</string>
+    <string name="goTooth">Go Tooth</string>
 </resources>

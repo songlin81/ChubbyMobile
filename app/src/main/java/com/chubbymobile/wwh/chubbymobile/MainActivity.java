@@ -319,5 +319,23 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToNavigation);
+
+        Button btnToTooth = new Button(this);
+        btnToTooth.setText(R.string.goTooth);
+        btnToTooth.setGravity(Gravity.CENTER);
+        btnToTooth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, ToothActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToTooth);
     }
 }
