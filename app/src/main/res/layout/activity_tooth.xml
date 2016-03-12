@@ -28,7 +28,7 @@
             >
             <TableRow>
                 <Button
-                    android:text="吃饭2"
+                    android:text="吃饭"
                     />
                 <Button
                     android:text="睡觉"

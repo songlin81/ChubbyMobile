@@ -63,6 +63,10 @@
         <activity
             android:name=".ToothActivity"
             android:label="@string/title_activity_tooth"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AssetActivity"
+            android:label="@string/title_activity_asset"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -33,4 +33,6 @@
     <string name="goNavigation">Go Navigation</string>
     <string name="title_activity_tooth">ToothActivity</string>
     <string name="goTooth">Go Tooth</string>
+    <string name="title_activity_asset">AssetActivity</string>
+    <string name="goAsset">Go Asset</string>
 </resources>

@@ -337,5 +337,23 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToTooth);
+
+        Button btnToAsset = new Button(this);
+        btnToAsset.setText(R.string.goAsset);
+        btnToAsset.setGravity(Gravity.CENTER);
+        btnToAsset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, AssetActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToAsset);
     }
 }
