@@ -5,6 +5,7 @@
     android:id="@+id/root">
 
     <LinearLayout
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,7 +28,7 @@
             >
             <TableRow>
                 <Button
-                    android:text="吃饭"
+                    android:text="吃饭2"
                     />
                 <Button
                     android:text="睡觉"
