@@ -34,7 +34,6 @@ public class MVPActivity extends Activity implements IShowUserView {
         pd.setMessage("Loading……");
 
         btn.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 userInfoPresenter.getUserInfoToShow(1);
