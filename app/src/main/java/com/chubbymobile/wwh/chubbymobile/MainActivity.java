@@ -355,5 +355,23 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToAsset);
+
+        Button btnToListView = new Button(this);
+        btnToListView.setText(R.string.goListView);
+        btnToListView.setGravity(Gravity.CENTER);
+        btnToListView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, ListViewActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToListView);
     }
 }

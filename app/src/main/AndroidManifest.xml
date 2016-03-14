@@ -67,6 +67,22 @@
         <activity
             android:name=".AssetActivity"
             android:label="@string/title_activity_asset"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListViewActivity"
+            android:label="@string/title_activity_list_view"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".QuizActivity"
+            android:label="@string/title_activity_quiz"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SignUp"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".FriendList"
+            android:label="@string/title_activity_friend_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

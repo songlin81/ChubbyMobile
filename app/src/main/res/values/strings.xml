@@ -35,4 +35,9 @@
     <string name="goTooth">Go Tooth</string>
     <string name="title_activity_asset">AssetActivity</string>
     <string name="goAsset">Go Asset</string>
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="goListView">Go ListView</string>
+    <string name="title_activity_quiz">QuizActivity</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_friend_list">FriendList</string>
 </resources>
