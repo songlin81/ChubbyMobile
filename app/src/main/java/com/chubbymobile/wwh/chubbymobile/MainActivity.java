@@ -28,7 +28,9 @@ public class MainActivity extends Activity {
             R.drawable.surprise
     };
     int currentImg = 0;
+
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
+
     MediaPlayer mMediaPlayer;
 
     @Override
@@ -37,7 +39,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
         LinearLayout main = (LinearLayout) findViewById(R.id.root);
 
-        //1. click event registered to image view.
+
+        //1. Display images in rotation.
         final ImageView image = new ImageView(this);
         image.setImageResource(images[0]);
         image.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +51,8 @@ public class MainActivity extends Activity {
         });
         main.addView(image);
 
-        //2. click event registered to button.
+
+        //2. Display time.
         Button btn = new Button(this);
         btn.setText(R.string.ok);
         btn.setGravity(Gravity.CENTER);
@@ -64,7 +68,8 @@ public class MainActivity extends Activity {
         main.addView(show);
         main.addView(btn);
 
-        //3.
+
+        //3. Pass data across activities, draw view and keep data in SharedPreferences.
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
         btnToSub.setGravity(Gravity.CENTER);
@@ -73,13 +78,14 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 show.setText("Current time: " + new java.util.Date());
                 Intent intent = new Intent(MainActivity.this, SubActivity.class);
-
                 intent.putExtra("et1", show.getText());
                 startActivity(intent);
                 finish();
             }
         });
 
+
+        // 4. Tba
         Button btnGeneral = new Button(this);
         btnGeneral.setText(R.string.promptBtn);
         btnGeneral.setGravity(Gravity.CENTER);
