@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.HashMap;
+
 public class ListViewActivity extends ListActivity {
 
     String classes[] = { "Quiz Trivia", "Sign A New User", "Friend List",
@@ -32,7 +34,13 @@ public class ListViewActivity extends ListActivity {
         super.onListItemClick(l, v, position, id);
 
         if (position == 0) {
-            Intent intent = new Intent(ListViewActivity.this, QuizActivity.class);
+            Intent intent = new Intent();
+            Person p = new Person();
+            p.map = new HashMap<String,String>();
+            p.map.put("yes", "ido");
+            p.name="ok";
+            intent.putExtra("yes", p);
+            intent.setClass(this, QuizActivity.class);
             startActivity(intent);
         }
         else if (position == 1) {

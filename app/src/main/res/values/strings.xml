@@ -40,4 +40,6 @@
     <string name="title_activity_quiz">QuizActivity</string>
     <string name="title_activity_sign_up">SignUp</string>
     <string name="title_activity_friend_list">FriendList</string>
+    <string name="title_activity_pull">PullActivity</string>
+    <string name="goPull">Go Pull</string>
 </resources>

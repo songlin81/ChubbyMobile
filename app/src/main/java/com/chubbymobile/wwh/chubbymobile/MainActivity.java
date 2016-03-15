@@ -373,5 +373,23 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToListView);
+
+        Button btnToPull = new Button(this);
+        btnToPull.setText(R.string.goPull);
+        btnToPull.setGravity(Gravity.CENTER);
+        btnToPull.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, PullActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToPull);
     }
 }
