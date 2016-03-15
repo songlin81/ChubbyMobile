@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
-
 import com.chubbymobile.wwh.chubbymobile.DAL.DBManager;
 import com.chubbymobile.wwh.chubbymobile.DAL.Person;
 import java.util.ArrayList;
@@ -116,7 +115,7 @@ public class DatabaseActivity extends Activity implements View.OnClickListener {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode== KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(DatabaseActivity.this, MainActivity.class);
             startActivity(intent);
             finish();

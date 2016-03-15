@@ -19,6 +19,8 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
 import android.widget.Toast;
 
+import java.util.jar.Manifest;
+
 public class MainActivity extends Activity {
 
     int[] images = new int[]{
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
     int currentImg = 0;
 
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
+    final boolean[] arrayCountry = new boolean[] {true, false, true};
 
     MediaPlayer mMediaPlayer;
 
@@ -83,9 +86,10 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+        main.addView(btnToSub);
 
 
-        // 4. Tba
+        // 4. Dialog
         Button btnGeneral = new Button(this);
         btnGeneral.setText(R.string.promptBtn);
         btnGeneral.setGravity(Gravity.CENTER);
@@ -96,36 +100,36 @@ public class MainActivity extends Activity {
                         MainActivity.this);
                 builder.setTitle("Warning");
                 builder.setMessage("Time to move on！");
-                //builder.setIcon(R.drawable.ic_launcher);
+                builder.setIcon(R.drawable.angry);
                 builder.setCancelable(false);
                 builder.setPositiveButton("OK", new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+                        Toast.makeText(MainActivity.this, "Dialog closed", Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.create().show();
             }
         });
+        main.addView(btnGeneral);
 
+
+        //5. multiple choice menu
         Button btnListViewMulti = new Button(this);
         btnListViewMulti.setText(R.string.listBtn);
         btnListViewMulti.setGravity(Gravity.CENTER);
         btnListViewMulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(
-                        MainActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 builder.setTitle("请选择城市");
-
-                builder.setMultiChoiceItems(items, new boolean[]{true, false,
-                        true}, new OnMultiChoiceClickListener() {
+                builder.setMultiChoiceItems(items, arrayCountry, new OnMultiChoiceClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which,
-                                        boolean isChecked) {
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
                         String select_item = items[which].toString();
                         Toast.makeText(MainActivity.this,
-                                "选择了--->>" + select_item, Toast.LENGTH_SHORT)
+                                "选择了--->>" + select_item + " checked: " + isChecked, Toast.LENGTH_SHORT)
                                 .show();
                     }
                 });
@@ -133,12 +137,22 @@ public class MainActivity extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                        StringBuilder stringBuilder = new StringBuilder();
+                        for (int i = 0; i < arrayCountry.length; i++) {
+                            if (arrayCountry[i] == true) {
+                                stringBuilder.append(items[i] + "、");
+                            }
+                        }
+                        Toast.makeText(MainActivity.this, "->" + stringBuilder, Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.show();
             }
         });
+        main.addView(btnListViewMulti);
 
+
+        //6. SQLite
         Button btnToDB = new Button(this);
         btnToDB.setText(R.string.SQLiteDB);
         btnToDB.setGravity(Gravity.CENTER);
@@ -150,7 +164,10 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+        main.addView(btnToDB);
 
+
+        //7. WebView with close button
         Button btnToWebView = new Button(this);
         btnToWebView.setText(R.string.goWebView);
         btnToWebView.setGravity(Gravity.CENTER);
@@ -162,6 +179,8 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+
+
 
         Button btnToFragment = new Button(this);
         btnToFragment.setText(R.string.goFragment);
@@ -294,10 +313,7 @@ public class MainActivity extends Activity {
             }
         });
 
-        main.addView(btnToSub);
-        main.addView(btnGeneral);
-        main.addView(btnListViewMulti);
-        main.addView(btnToDB);
+
         main.addView(btnToWebView);
         main.addView(btnToFragment);
         main.addView(btnToImage);

@@ -40,7 +40,7 @@ public class SubActivity extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode== KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Toast.makeText(SubActivity.this, "选择了--->>" + keyCode, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SubActivity.this, MainActivity.class);
             startActivity(intent);
