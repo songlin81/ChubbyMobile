@@ -46,8 +46,11 @@ public class PullActivity extends Activity implements SwipeRefreshLayout.OnRefre
         mSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.id_swipe_ly);
 
         mSwipeLayout.setOnRefreshListener(this);
-        mSwipeLayout.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_green_light,
-                android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        mSwipeLayout.setColorSchemeResources(
+                android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mDatas);
         mListView.setAdapter(mAdapter);
     }
