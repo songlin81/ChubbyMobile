@@ -14,9 +14,9 @@ public class GridViewActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grid_view);
-        GridView gridview=(GridView)findViewById(R.id.gridview);//找到main.xml中定义gridview 的id
-        gridview.setAdapter(new ImageAdapter(this));//调用ImageAdapter.java
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {//监听事件
+        GridView gridview=(GridView)findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(GridViewActivity.this, "" + position, Toast.LENGTH_SHORT).show();
             }

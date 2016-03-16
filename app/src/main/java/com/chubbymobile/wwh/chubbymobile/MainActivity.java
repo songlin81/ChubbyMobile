@@ -54,7 +54,6 @@ public class MainActivity extends Activity {
         });
         main.addView(image);
 
-
         //2. Display time.
         Button btn = new Button(this);
         btn.setText(R.string.ok);
@@ -71,7 +70,6 @@ public class MainActivity extends Activity {
         main.addView(show);
         main.addView(btn);
 
-
         //3. Pass data across activities, draw view and keep data in SharedPreferences.
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
@@ -87,7 +85,6 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToSub);
-
 
         // 4. Dialog
         Button btnGeneral = new Button(this);
@@ -113,7 +110,6 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnGeneral);
-
 
         //5. multiple choice menu
         Button btnListViewMulti = new Button(this);
@@ -151,7 +147,6 @@ public class MainActivity extends Activity {
         });
         main.addView(btnListViewMulti);
 
-
         //6. SQLite
         Button btnToDB = new Button(this);
         btnToDB.setText(R.string.SQLiteDB);
@@ -165,7 +160,6 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToDB);
-
 
         //7. WebView with close button
         Button btnToWebView = new Button(this);
@@ -181,7 +175,6 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToWebView);
 
-
         //8. Fragment
         Button btnToFragment = new Button(this);
         btnToFragment.setText(R.string.goFragment);
@@ -195,7 +188,6 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToFragment);
-
 
         //9. Image Viewer
         Button btnToImage = new Button(this);
@@ -211,8 +203,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToImage);
 
-
-        //10.
+        //10. Ringtong on.
         Button btnToSound = new Button(this);
         btnToSound.setText(R.string.goSound);
         btnToSound.setGravity(Gravity.CENTER);
@@ -226,7 +217,6 @@ public class MainActivity extends Activity {
                         mMediaPlayer.reset();
                     Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
                     mMediaPlayer.setDataSource(MainActivity.this, alert);
-                    //final AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
                     mMediaPlayer.setAudioStreamType(AudioManager.STREAM_RING);
                     mMediaPlayer.setLooping(true);
                     mMediaPlayer.prepare();
@@ -236,7 +226,9 @@ public class MainActivity extends Activity {
                 }
             }
         });
+        main.addView(btnToSound);
 
+        //11. Ringtong off.
         Button btnToSoundStop = new Button(this);
         btnToSoundStop.setText(R.string.stopSound);
         btnToSoundStop.setGravity(Gravity.CENTER);
@@ -251,7 +243,9 @@ public class MainActivity extends Activity {
 
             }
         });
+        main.addView(btnToSoundStop);
 
+        //12. MVP
         Button btnToMVP = new Button(this);
         btnToMVP.setText(R.string.goMVP);
         btnToMVP.setGravity(Gravity.CENTER);
@@ -268,7 +262,9 @@ public class MainActivity extends Activity {
 
             }
         });
+        main.addView(btnToMVP);
 
+        //13. GridView
         Button btnToGridView = new Button(this);
         btnToGridView.setText(R.string.goGridView);
         btnToGridView.setGravity(Gravity.CENTER);
@@ -285,7 +281,9 @@ public class MainActivity extends Activity {
 
             }
         });
+        main.addView(btnToGridView);
 
+        //14. Notification
         Button btnToNotification = new Button(this);
         btnToNotification.setText(R.string.goNotification);
         btnToNotification.setGravity(Gravity.CENTER);
@@ -302,7 +300,10 @@ public class MainActivity extends Activity {
 
             }
         });
+        main.addView(btnToNotification);
 
+
+        //15.
         Button btnToGridMenu = new Button(this);
         btnToGridMenu.setText(R.string.goGridMenu);
         btnToGridMenu.setGravity(Gravity.CENTER);
@@ -319,16 +320,10 @@ public class MainActivity extends Activity {
 
             }
         });
-
-
-        main.addView(btnToSound);
-        main.addView(btnToSoundStop);
-        main.addView(btnToMVP);
-        main.addView(btnToGridView);
-        main.addView(btnToNotification);
         main.addView(btnToGridMenu);
 
 
+        //16.
         Button btnToNavigation = new Button(this);
         btnToNavigation.setText(R.string.goNavigation);
         btnToNavigation.setGravity(Gravity.CENTER);

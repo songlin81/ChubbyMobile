@@ -7,10 +7,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -36,9 +32,11 @@ public class NotifyActivity extends Activity {
                 myNotify.tickerText = "TickerText:您有新短消息，请注意查收！";
                 myNotify.when = System.currentTimeMillis();
                 myNotify.flags = Notification.FLAG_AUTO_CANCEL; //FLAG_NO_CLEAR;// 不能够自动清除
+
                 RemoteViews rv = new RemoteViews(getPackageName(), R.layout.my_notification);
                 rv.setTextViewText(R.id.text_content, "Notice arrived!");
                 myNotify.contentView = rv;
+
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 PendingIntent contentIntent = PendingIntent.getActivity(this, 1, intent, 1);
                 myNotify.contentIntent = contentIntent;
