@@ -179,9 +179,10 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+        main.addView(btnToWebView);
 
 
-
+        //8. Fragment
         Button btnToFragment = new Button(this);
         btnToFragment.setText(R.string.goFragment);
         btnToFragment.setGravity(Gravity.CENTER);
@@ -193,7 +194,10 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+        main.addView(btnToFragment);
 
+
+        //9. Image Viewer
         Button btnToImage = new Button(this);
         btnToImage.setText(R.string.goImage);
         btnToImage.setGravity(Gravity.CENTER);
@@ -205,7 +209,10 @@ public class MainActivity extends Activity {
                 finish();
             }
         });
+        main.addView(btnToImage);
 
+
+        //10.
         Button btnToSound = new Button(this);
         btnToSound.setText(R.string.goSound);
         btnToSound.setGravity(Gravity.CENTER);
@@ -314,15 +321,13 @@ public class MainActivity extends Activity {
         });
 
 
-        main.addView(btnToWebView);
-        main.addView(btnToFragment);
-        main.addView(btnToImage);
         main.addView(btnToSound);
         main.addView(btnToSoundStop);
         main.addView(btnToMVP);
         main.addView(btnToGridView);
         main.addView(btnToNotification);
         main.addView(btnToGridMenu);
+
 
         Button btnToNavigation = new Button(this);
         btnToNavigation.setText(R.string.goNavigation);
@@ -342,6 +347,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToNavigation);
 
+
         Button btnToTooth = new Button(this);
         btnToTooth.setText(R.string.goTooth);
         btnToTooth.setGravity(Gravity.CENTER);
@@ -359,6 +365,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToTooth);
+
 
         Button btnToAsset = new Button(this);
         btnToAsset.setText(R.string.goAsset);
@@ -378,6 +385,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToAsset);
 
+
         Button btnToListView = new Button(this);
         btnToListView.setText(R.string.goListView);
         btnToListView.setGravity(Gravity.CENTER);
@@ -395,6 +403,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToListView);
+
 
         Button btnToPull = new Button(this);
         btnToPull.setText(R.string.goPull);

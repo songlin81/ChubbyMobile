@@ -17,7 +17,6 @@ public class FragmentPage extends FragmentActivity {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
         ExampleFragment fragment = new ExampleFragment();
         fragmentTransaction.add(R.id.linear, fragment);
         fragmentTransaction.commit();
