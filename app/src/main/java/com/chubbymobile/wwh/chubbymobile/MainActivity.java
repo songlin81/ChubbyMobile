@@ -415,5 +415,24 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToPull);
+
+        //21. Send SMS
+        Button btnToSendSMS = new Button(this);
+        btnToSendSMS.setText(R.string.goSendSMS);
+        btnToSendSMS.setGravity(Gravity.CENTER);
+        btnToSendSMS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, SendSMSActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToSendSMS);
     }
 }

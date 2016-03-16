@@ -3,6 +3,7 @@
     package="com.chubbymobile.wwh.chubbymobile">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -87,6 +88,10 @@
         <activity
             android:name=".PullActivity"
             android:label="@string/title_activity_pull"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SendSMSActivity"
+            android:label="@string/title_activity_send_sms"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

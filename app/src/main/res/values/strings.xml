@@ -42,4 +42,9 @@
     <string name="title_activity_friend_list">FriendList</string>
     <string name="title_activity_pull">PullActivity</string>
     <string name="goPull">Go Pull</string>
+    <string name="goSendSMS">Go Send SMS</string>
+    <string name="title_activity_send_sms">SendSMSActivity</string>
+    <string name="send">send</string>
+    <string name="number">number</string>
+    <string name="content">content</string>
 </resources>
