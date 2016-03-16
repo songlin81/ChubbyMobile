@@ -39,6 +39,7 @@ public class NotifyActivity extends Activity {
 
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 PendingIntent contentIntent = PendingIntent.getActivity(this, 1, intent, 1);
+
                 myNotify.contentIntent = contentIntent;
                 manager.notify(NOTIFICATION_FLAG, myNotify);
                 break;

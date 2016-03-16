@@ -302,8 +302,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToNotification);
 
-
-        //15.
+        //15. GridView menu
         Button btnToGridMenu = new Button(this);
         btnToGridMenu.setText(R.string.goGridMenu);
         btnToGridMenu.setGravity(Gravity.CENTER);
@@ -322,8 +321,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToGridMenu);
 
-
-        //16.
+        //16. Fragment under bottom switching views.
         Button btnToNavigation = new Button(this);
         btnToNavigation.setText(R.string.goNavigation);
         btnToNavigation.setGravity(Gravity.CENTER);
@@ -342,7 +340,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToNavigation);
 
-
+        //17. Forced horizontal view
         Button btnToTooth = new Button(this);
         btnToTooth.setText(R.string.goTooth);
         btnToTooth.setGravity(Gravity.CENTER);
@@ -361,7 +359,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToTooth);
 
-
+        //18. Render pix from assets
         Button btnToAsset = new Button(this);
         btnToAsset.setText(R.string.goAsset);
         btnToAsset.setGravity(Gravity.CENTER);
@@ -380,7 +378,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToAsset);
 
-
+        //19. ListView route to sub activity
         Button btnToListView = new Button(this);
         btnToListView.setText(R.string.goListView);
         btnToListView.setGravity(Gravity.CENTER);
@@ -399,7 +397,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToListView);
 
-
+        //20. Pull to refresh
         Button btnToPull = new Button(this);
         btnToPull.setText(R.string.goPull);
         btnToPull.setGravity(Gravity.CENTER);
