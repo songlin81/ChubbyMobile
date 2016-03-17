@@ -434,5 +434,25 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToSendSMS);
+
+
+        //22. http request to GET
+        Button btnToGetImage = new Button(this);
+        btnToGetImage.setText(R.string.goHttpImage);
+        btnToGetImage.setGravity(Gravity.CENTER);
+        btnToGetImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, URLActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToGetImage);
     }
 }

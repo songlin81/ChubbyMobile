@@ -47,4 +47,6 @@
     <string name="send">send</string>
     <string name="number">number</string>
     <string name="content">content</string>
+    <string name="title_activity_url">URLActivity</string>
+    <string name="goHttpImage">Go Http Image</string>
 </resources>
