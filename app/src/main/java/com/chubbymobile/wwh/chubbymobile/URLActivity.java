@@ -48,10 +48,8 @@ public class URLActivity extends Activity {
             }
             final TextView tv=(TextView)findViewById(R.id.textView4);
             Bundle b=msg.getData();
-            String value="";
             if(b.getString("OnWeb")!=null){
                 tv.setText(b.getString("OnWeb").toString());
-                Toast.makeText(URLActivity.this, "....", 8000).show();
             }
         }
     };
@@ -120,7 +118,7 @@ public class URLActivity extends Activity {
                         handler.sendMessage(m);
                     }
                 }).start();
-                Toast.makeText(URLActivity.this, "image sent", 8000).show();
+                Toast.makeText(URLActivity.this, "Smiley sent", 8000).show();
             }
         });
 
