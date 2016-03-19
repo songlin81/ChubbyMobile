@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.os.storage.StorageManager;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.KeyEvent;
@@ -17,6 +18,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -43,19 +48,22 @@ public class URLActivity extends Activity {
     Bitmap bitmap;
     private String result = "";
 
-    Handler handler = new Handler()
-    {
+    Handler handler = new Handler() {
         @Override
-        public void handleMessage(Message msg)
-        {
-            if(msg.what == 0x123)
-            {
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x123) {
                 show.setImageBitmap(bitmap);
             }
         }
     };
 
     Button send;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
+
     public void send() {
         String target = "https://chubbyng-songlin81.c9users.io/products/";
         URL url;
@@ -67,15 +75,15 @@ public class URLActivity extends Activity {
             urlConn.setDoOutput(true);
             urlConn.setUseCaches(false); // 禁止缓存
             urlConn.setInstanceFollowRedirects(true);   //自动执行HTTP重定向
-            urlConn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream());
 
-            Resources r=this.getResources();
-            Bitmap bm=BitmapFactory.decodeResource(r, R.drawable.angry);
-            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            Resources r = this.getResources();
+            Bitmap bm = BitmapFactory.decodeResource(r, R.drawable.angry);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
             byte[] b = baos.toByteArray();
-            String decodedString= Base64.encodeToString(b, 1);
+            String decodedString = Base64.encodeToString(b, 1);
             String param = //"nickname="
                     //+ URLEncoder.encode("testName", "utf-8")
                     //+ "&content="
@@ -102,8 +110,7 @@ public class URLActivity extends Activity {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_url);
         send = (Button) findViewById(R.id.button);
@@ -122,12 +129,9 @@ public class URLActivity extends Activity {
         });
 
         show = (ImageView) findViewById(R.id.show);
-        new Thread()
-        {
-            public void run()
-            {
-                try
-                {
+        new Thread() {
+            public void run() {
+                try {
                     URL url = new URL("http://images.pchome.net/global/img2/copyright2011_cnet.png");
                     InputStream is = url.openStream();
                     bitmap = BitmapFactory.decodeStream(is);
@@ -137,15 +141,12 @@ public class URLActivity extends Activity {
                     OutputStream os = openFileOutput("test.png", MODE_WORLD_READABLE);
                     byte[] buff = new byte[1024];
                     int hasRead = 0;
-                    while((hasRead = is.read(buff)) > 0)
-                    {
-                        os.write(buff, 0 , hasRead);
+                    while ((hasRead = is.read(buff)) > 0) {
+                        os.write(buff, 0, hasRead);
                     }
                     is.close();
                     os.close();
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -181,7 +182,9 @@ public class URLActivity extends Activity {
                 //拍完照startActivityForResult() 结果返回onActivityResult()函数
             }
         });
-
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -190,48 +193,48 @@ public class URLActivity extends Activity {
             Toast.makeText(URLActivity.this, "ActivityResult resultCode error", Toast.LENGTH_SHORT).show();
             return;
         }
-        switch(requestCode) {
+        switch (requestCode) {
             case TAKE_PHOTO:
                 Intent intent = new Intent("com.android.camera.action.CROP"); //剪裁
                 intent.setDataAndType(imageUri, "image");
-        intent.putExtra("scale", true);
-        //设置宽高比例
-        intent.putExtra("aspectX", 1);
-        intent.putExtra("aspectY", 1);
-        //设置裁剪图片宽高
-        intent.putExtra("outputX", 340);
-        intent.putExtra("outputY", 340);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-        Toast.makeText(URLActivity.this, "剪裁图片", Toast.LENGTH_SHORT).show();
-        //广播刷新相册
-        Intent intentBc = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        intentBc.setData(imageUri);
-        this.sendBroadcast(intentBc);
-        startActivityForResult(intent, CROP_PHOTO); //设置裁剪参数显示图片至ImageView
-        break;
-    case CROP_PHOTO:
-        try {
-            //图片解析成Bitmap对象
-            final Bitmap bitmap = BitmapFactory.decodeStream(
-                    getContentResolver().openInputStream(imageUri));
-            Toast.makeText(URLActivity.this, imageUri.toString(), Toast.LENGTH_SHORT).show();
-            showImage.setImageBitmap(bitmap); //将剪裁后照片显示出来
+                intent.putExtra("scale", true);
+                //设置宽高比例
+                intent.putExtra("aspectX", 1);
+                intent.putExtra("aspectY", 1);
+                //设置裁剪图片宽高
+                intent.putExtra("outputX", 340);
+                intent.putExtra("outputY", 340);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                Toast.makeText(URLActivity.this, "剪裁图片" + imageUri, Toast.LENGTH_SHORT).show();
+                //广播刷新相册
+                Intent intentBc = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+                intentBc.setData(imageUri);
+                this.sendBroadcast(intentBc);
+                startActivityForResult(intent, CROP_PHOTO); //设置裁剪参数显示图片至ImageView
+                break;
+            case CROP_PHOTO:
+                try {
+                    //图片解析成Bitmap对象
+                    final Bitmap bitmap = BitmapFactory.decodeStream(
+                            getContentResolver().openInputStream(imageUri));
+                    Toast.makeText(URLActivity.this, imageUri.toString(), Toast.LENGTH_SHORT).show();
+                    showImage.setImageBitmap(bitmap); //将剪裁后照片显示出来
 
-            new Thread(new Runnable() {
-                public void run() {
-                    send2(bitmap);
-                    Message m = handler.obtainMessage();
-                    handler.sendMessage(m);
+                    new Thread(new Runnable() {
+                        public void run() {
+                            send2(bitmap);
+                            Message m = handler.obtainMessage();
+                            handler.sendMessage(m);
+                        }
+                    }).start();
+                    Toast.makeText(URLActivity.this, "image sent", 8000).show();
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
                 }
-            }).start();
-            Toast.makeText(URLActivity.this, "image sent", 8000).show();
-
-        } catch(FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        break;
-        default:
-            break;
+                break;
+            default:
+                break;
         }
     }
 
@@ -246,15 +249,15 @@ public class URLActivity extends Activity {
             urlConn.setDoOutput(true);
             urlConn.setUseCaches(false); // 禁止缓存
             urlConn.setInstanceFollowRedirects(true);   //自动执行HTTP重定向
-            urlConn.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
+            urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream());
 
             //Resources r=this.getResources();
-            Bitmap bm=bmIn;//BitmapFactory.decodeResource(r, R.drawable.angry);
-            ByteArrayOutputStream baos=new ByteArrayOutputStream();
-            bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            Bitmap bm = bmIn;//BitmapFactory.decodeResource(r, R.drawable.angry);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            bm.compress(Bitmap.CompressFormat.JPEG, 70, baos);
             byte[] b = baos.toByteArray();
-            String decodedString= Base64.encodeToString(b, 1);
+            String decodedString = Base64.encodeToString(b, 1);
             String param = //"nickname="
                     //+ URLEncoder.encode("testName", "utf-8")
                     //+ "&content="
@@ -282,7 +285,7 @@ public class URLActivity extends Activity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode== KeyEvent.KEYCODE_BACK) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(URLActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -296,4 +299,44 @@ public class URLActivity extends Activity {
     private ImageView showImage;
     private Uri imageUri;
     private String filename;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "URL Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.chubbymobile.wwh.chubbymobile/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "URL Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://com.chubbymobile.wwh.chubbymobile/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
 }
