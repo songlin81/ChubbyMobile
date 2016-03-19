@@ -10,19 +10,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
-import android.os.storage.StorageManager;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -38,9 +33,6 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.ResourceBundle;
-
-import static android.util.Base64.encodeToString;
 
 public class URLActivity extends Activity {
 
@@ -54,17 +46,19 @@ public class URLActivity extends Activity {
             if (msg.what == 0x123) {
                 show.setImageBitmap(bitmap);
             }
+            final TextView tv=(TextView)findViewById(R.id.textView4);
+            Bundle b=msg.getData();
+            String value="";
+            if(b.getString("OnWeb")!=null){
+                tv.setText(b.getString("OnWeb").toString());
+                Toast.makeText(URLActivity.this, "....", 8000).show();
+            }
         }
     };
 
     Button send;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
-    public void send() {
+    public String send() {
         String target = "https://chubbyng-songlin81.c9users.io/products/";
         URL url;
         try {
@@ -73,8 +67,8 @@ public class URLActivity extends Activity {
             urlConn.setRequestMethod("POST");
             urlConn.setDoInput(true);
             urlConn.setDoOutput(true);
-            urlConn.setUseCaches(false); // 禁止缓存
-            urlConn.setInstanceFollowRedirects(true);   //自动执行HTTP重定向
+            urlConn.setUseCaches(false);
+            urlConn.setInstanceFollowRedirects(true);
             urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
             DataOutputStream out = new DataOutputStream(urlConn.getOutputStream());
 
@@ -84,11 +78,7 @@ public class URLActivity extends Activity {
             bm.compress(Bitmap.CompressFormat.PNG, 100, baos);
             byte[] b = baos.toByteArray();
             String decodedString = Base64.encodeToString(b, 1);
-            String param = //"nickname="
-                    //+ URLEncoder.encode("testName", "utf-8")
-                    //+ "&content="
-                    //+ URLEncoder.encode("testContent", "utf-8")
-                    "image=" + URLEncoder.encode(decodedString, "utf-8");
+            String param = "image=" + URLEncoder.encode(decodedString, "utf-8");
             out.writeBytes(param);
             out.flush();
             out.close();
@@ -107,6 +97,9 @@ public class URLActivity extends Activity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        finally {
+            return result;
+        }
     }
 
     @Override
@@ -119,8 +112,11 @@ public class URLActivity extends Activity {
             public void onClick(View arg0) {
                 new Thread(new Runnable() {
                     public void run() {
-                        send();
+                        String rlt=send();
                         Message m = handler.obtainMessage();
+                        Bundle b=new Bundle();
+                        b.putString("OnWeb", rlt);
+                        m.setData(b);
                         handler.sendMessage(m);
                     }
                 }).start();
@@ -157,10 +153,12 @@ public class URLActivity extends Activity {
         takePhotoBn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //图片名称 时间命名
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
                 Date date = new Date(System.currentTimeMillis());
-                filename = format.format(date);
+
+                //filename = format.format(date);
+                filename=format.toString();
+
                 //创建File对象用于存储拍照的图片 SD卡根目录
                 //File outputImage = new File(Environment.getExternalStorageDirectory(),test.jpg);
                 //存储至DCIM文件夹
@@ -176,15 +174,13 @@ public class URLActivity extends Activity {
                 }
                 //将File对象转换为Uri并启动照相程序
                 imageUri = Uri.fromFile(outputImage);
+                Toast.makeText(URLActivity.this, "name 1:" + imageUri, Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //照相
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri); //指定图片输出地址
                 startActivityForResult(intent, TAKE_PHOTO); //启动照相
-                //拍完照startActivityForResult() 结果返回onActivityResult()函数
             }
         });
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -195,17 +191,23 @@ public class URLActivity extends Activity {
         }
         switch (requestCode) {
             case TAKE_PHOTO:
+
+                Toast.makeText(URLActivity.this, "Take phote~name:" + imageUri, Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent("com.android.camera.action.CROP"); //剪裁
                 intent.setDataAndType(imageUri, "image");
                 intent.putExtra("scale", true);
+
                 //设置宽高比例
-                intent.putExtra("aspectX", 1);
-                intent.putExtra("aspectY", 1);
+                //intent.putExtra("aspectX", 1);
+                //intent.putExtra("aspectY", 1);
+
                 //设置裁剪图片宽高
                 intent.putExtra("outputX", 340);
                 intent.putExtra("outputY", 340);
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
-                Toast.makeText(URLActivity.this, "剪裁图片" + imageUri, Toast.LENGTH_SHORT).show();
+                Toast.makeText(URLActivity.this, "剪裁图片" + filename, Toast.LENGTH_SHORT).show();
+
                 //广播刷新相册
                 Intent intentBc = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
                 intentBc.setData(imageUri);
@@ -217,8 +219,11 @@ public class URLActivity extends Activity {
                     //图片解析成Bitmap对象
                     final Bitmap bitmap = BitmapFactory.decodeStream(
                             getContentResolver().openInputStream(imageUri));
-                    Toast.makeText(URLActivity.this, imageUri.toString(), Toast.LENGTH_SHORT).show();
-                    showImage.setImageBitmap(bitmap); //将剪裁后照片显示出来
+                    Toast.makeText(URLActivity.this, "Crop: "+ imageUri, Toast.LENGTH_LONG).show();
+                    //showImage.setImageBitmap(bitmap); //将剪裁后照片显示出来
+
+                    //final TextView tv=(TextView)findViewById(R.id.textView4);
+                    //tv.setText(imageUri.toString());
 
                     new Thread(new Runnable() {
                         public void run() {
@@ -255,14 +260,10 @@ public class URLActivity extends Activity {
             //Resources r=this.getResources();
             Bitmap bm = bmIn;//BitmapFactory.decodeResource(r, R.drawable.angry);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bm.compress(Bitmap.CompressFormat.JPEG, 70, baos);
+            bm.compress(Bitmap.CompressFormat.JPEG, 60, baos);
             byte[] b = baos.toByteArray();
             String decodedString = Base64.encodeToString(b, 1);
-            String param = //"nickname="
-                    //+ URLEncoder.encode("testName", "utf-8")
-                    //+ "&content="
-                    //+ URLEncoder.encode("testContent", "utf-8")
-                    "image=" + URLEncoder.encode(decodedString, "utf-8");
+            String param = "image=" + URLEncoder.encode(decodedString, "utf-8");
             out.writeBytes(param);
             out.flush();
             out.close();
@@ -299,44 +300,4 @@ public class URLActivity extends Activity {
     private ImageView showImage;
     private Uri imageUri;
     private String filename;
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "URL Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.chubbymobile.wwh.chubbymobile/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "URL Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://com.chubbymobile.wwh.chubbymobile/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
 }
