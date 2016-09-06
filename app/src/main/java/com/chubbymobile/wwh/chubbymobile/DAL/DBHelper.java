@@ -10,18 +10,18 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     public DBHelper(Context context) {
-        //CursorFactory设置为null,使用默认值
+        //CursorFactory is set to null, use default value
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    //数据库第一次被创建时onCreate会被调用
+    //onCreate will be invoked when db first created.
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS person" +
                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR, age INTEGER, info TEXT)");
     }
 
-    //如果DATABASE_VERSION值被改为2,系统发现现有数据库版本不同,即会调用onUpgrade
+    //If DATABASE_VERSION is updated to 2,when ver diff, will call for onUpgrade
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("ALTER TABLE person ADD COLUMN other STRING");
