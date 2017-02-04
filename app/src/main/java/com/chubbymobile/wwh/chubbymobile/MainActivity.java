@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
     };
     int currentImg = 0;
 
+
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
     final boolean[] arrayCountry = new boolean[] {true, false, true};
 
