@@ -39,6 +39,7 @@ public class URLActivity extends Activity {
     ImageView show;
     Bitmap bitmap;
     private String result = "";
+    int intX, intY;
 
     Handler handler = new Handler() {
         @Override
@@ -151,6 +152,7 @@ public class URLActivity extends Activity {
         takePhotoBn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
                 Date date = new Date(System.currentTimeMillis());
 
@@ -176,6 +178,9 @@ public class URLActivity extends Activity {
 
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE); //照相
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri); //指定图片输出地址
+
+                //intent.setAction("android.media.action.STILL_IMAGE_CAMERA");
+
                 startActivityForResult(intent, TAKE_PHOTO); //启动照相
             }
         });
@@ -183,6 +188,9 @@ public class URLActivity extends Activity {
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        //Toast.makeText(URLActivity.this, resultCode, Toast.LENGTH_LONG);
+
         if (resultCode != RESULT_OK) {
             Toast.makeText(URLActivity.this, "ActivityResult resultCode error", Toast.LENGTH_SHORT).show();
             return;
@@ -201,8 +209,11 @@ public class URLActivity extends Activity {
                 //intent.putExtra("aspectY", 1);
 
                 //设置裁剪图片宽高
-                intent.putExtra("outputX", 340);
-                intent.putExtra("outputY", 340);
+                //intent.putExtra("outputX", 640);
+                //intent.putExtra("outputY", 640);
+                intent.putExtra("outputX", 800);
+                intent.putExtra("outputY", 800);
+
                 intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                 Toast.makeText(URLActivity.this, "剪裁图片" + filename, Toast.LENGTH_SHORT).show();
 
@@ -218,6 +229,9 @@ public class URLActivity extends Activity {
                     final Bitmap bitmap = BitmapFactory.decodeStream(
                             getContentResolver().openInputStream(imageUri));
                     Toast.makeText(URLActivity.this, "Crop: "+ imageUri, Toast.LENGTH_LONG).show();
+
+                    intX=bitmap.getWidth();
+                    intY=bitmap.getHeight();
                     //showImage.setImageBitmap(bitmap); //将剪裁后照片显示出来
 
                     //final TextView tv=(TextView)findViewById(R.id.textView4);
@@ -230,7 +244,7 @@ public class URLActivity extends Activity {
                             handler.sendMessage(m);
                         }
                     }).start();
-                    Toast.makeText(URLActivity.this, "image sent", 8000).show();
+                    Toast.makeText(URLActivity.this, "image sent 2", 8000).show();
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
@@ -238,6 +252,37 @@ public class URLActivity extends Activity {
                 break;
             default:
                 break;
+        }
+    }
+
+
+    public static String convertIconToString(Bitmap bitmap)
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();// outputstream
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] appicon = baos.toByteArray();// 转为byte数组
+        return Base64.encodeToString(appicon, Base64.DEFAULT);
+
+    }
+
+    public static Bitmap convertStringToIcon(String st)
+    {
+        // OutputStream out;
+        Bitmap bitmap = null;
+        try
+        {
+            // out = new FileOutputStream("/sdcard/aa.jpg");
+            byte[] bitmapArray;
+            bitmapArray = Base64.decode(st, Base64.DEFAULT);
+            bitmap =
+                    BitmapFactory.decodeByteArray(bitmapArray, 0,
+                            bitmapArray.length);
+            // bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            return bitmap;
+        }
+        catch (Exception e)
+        {
+            return null;
         }
     }
 
@@ -260,7 +305,10 @@ public class URLActivity extends Activity {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             bm.compress(Bitmap.CompressFormat.JPEG, 60, baos);
             byte[] b = baos.toByteArray();
-            String decodedString = Base64.encodeToString(b, 1);
+            //String decodedString = Base64.encodeToString(b, 1);
+
+            String decodedString = convertIconToString(bmIn);
+
             String param = "image=" + URLEncoder.encode(decodedString, "utf-8");
             out.writeBytes(param);
             out.flush();

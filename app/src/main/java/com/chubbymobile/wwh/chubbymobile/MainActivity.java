@@ -43,7 +43,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
         LinearLayout main = (LinearLayout) findViewById(R.id.root);
 
-
         //1. Display images in rotation.
         final ImageView image = new ImageView(this);
         image.setImageResource(images[0]);
