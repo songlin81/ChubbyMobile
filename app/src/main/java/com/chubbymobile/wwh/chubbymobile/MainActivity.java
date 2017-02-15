@@ -454,5 +454,45 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToGetImage);
+
+
+        //23 auto camera
+        Button btnToPhoto = new Button(this);
+        btnToPhoto.setText(R.string.goPhoto);
+        btnToPhoto.setGravity(Gravity.CENTER);
+        btnToPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToPhoto);
+
+
+        //24 timer for delay
+        Button btnToTimer = new Button(this);
+        btnToTimer.setText(R.string.goTimer);
+        btnToTimer.setGravity(Gravity.CENTER);
+        btnToTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainActivity.this, TimerActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        main.addView(btnToTimer);
     }
 }

@@ -49,4 +49,14 @@
     <string name="content">content</string>
     <string name="title_activity_url">URLActivity</string>
     <string name="goHttpImage">Go Http Image</string>
+    <string name="goPhoto">Auto Photo</string>
+    <string name="title_activity_photo">PhotoActivity</string>
+    <string name="hello">hello2</string>
+    <string name="str_btn_capture">capture</string>
+    <string name="str_btn_closeAndSum">Close</string>
+    <string name="title_activity_show_pic">ShowPicActivity</string>
+    <string name="success">success</string>
+    <string name="takephoto">Take Photo</string>
+    <string name="goTimer">Timer</string>
+    <string name="title_activity_timer">TimerActivity</string>
 </resources>
