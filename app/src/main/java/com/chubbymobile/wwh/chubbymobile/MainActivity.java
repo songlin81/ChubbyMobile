@@ -74,7 +74,7 @@ public class MainActivity extends Activity {
         main.addView(btn);
 
 
-        //3. Pass data across activities, draw view and keep data in SharedPreferences.
+        //3. Review: Pass data across activities, draw view and keep data in SharedPreferences.
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
         btnToSub.setGravity(Gravity.CENTER);
@@ -90,7 +90,8 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToSub);
 
-        // 4. Dialog
+
+        // 4. Review: Dialog
         Button btnGeneral = new Button(this);
         btnGeneral.setText(R.string.promptBtn);
         btnGeneral.setGravity(Gravity.CENTER);
@@ -114,6 +115,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnGeneral);
+
 
         //5. multiple choice menu
         Button btnListViewMulti = new Button(this);
