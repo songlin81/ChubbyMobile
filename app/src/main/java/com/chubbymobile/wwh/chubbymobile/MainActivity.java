@@ -185,7 +185,7 @@ public class MainActivity extends Activity {
         main.addView(btnToWebView);
 
 
-        //8. Fragment
+        //8. Review: Fragment
         Button btnToFragment = new Button(this);
         btnToFragment.setText(R.string.goFragment);
         btnToFragment.setGravity(Gravity.CENTER);
@@ -198,6 +198,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToFragment);
+
 
         //9. Image Viewer
         Button btnToImage = new Button(this);
@@ -212,6 +213,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToImage);
+
 
         //10. Ringtong on.
         Button btnToSound = new Button(this);
@@ -238,6 +240,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToSound);
 
+
         //11. Ringtong off.
         Button btnToSoundStop = new Button(this);
         btnToSoundStop.setText(R.string.stopSound);
@@ -254,6 +257,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToSoundStop);
+
 
         //12. MVP
         Button btnToMVP = new Button(this);
@@ -274,6 +278,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToMVP);
 
+
         //13. GridView
         Button btnToGridView = new Button(this);
         btnToGridView.setText(R.string.goGridView);
@@ -292,6 +297,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToGridView);
+
 
         //14. Notification
         Button btnToNotification = new Button(this);
@@ -312,6 +318,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToNotification);
 
+
         //15. GridView menu
         Button btnToGridMenu = new Button(this);
         btnToGridMenu.setText(R.string.goGridMenu);
@@ -330,6 +337,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToGridMenu);
+
 
         //16. Fragment under bottom switching views.
         Button btnToNavigation = new Button(this);
@@ -350,6 +358,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToNavigation);
 
+
         //17. Forced horizontal view
         Button btnToTooth = new Button(this);
         btnToTooth.setText(R.string.goTooth);
@@ -368,6 +377,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToTooth);
+
 
         //18. Render pix from assets
         Button btnToAsset = new Button(this);
@@ -388,6 +398,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToAsset);
 
+
         //19. ListView route to sub activity
         Button btnToListView = new Button(this);
         btnToListView.setText(R.string.goListView);
@@ -406,6 +417,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToListView);
+
 
         //20. Pull to refresh
         Button btnToPull = new Button(this);
@@ -426,6 +438,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToPull);
 
+        
         //21. Send SMS
         Button btnToSendSMS = new Button(this);
         btnToSendSMS.setText(R.string.goSendSMS);
