@@ -32,10 +32,11 @@ public class MainActivity extends Activity {
     };
     int currentImg = 0;
 
-
+    //5.
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
     final boolean[] arrayCountry = new boolean[] {true, false, true};
 
+    //10.
     MediaPlayer mMediaPlayer;
 
     @Override
@@ -117,7 +118,7 @@ public class MainActivity extends Activity {
         main.addView(btnGeneral);
 
 
-        //5. multiple choice menu
+        //5. Review: multiple choice menu
         Button btnListViewMulti = new Button(this);
         btnListViewMulti.setText(R.string.listBtn);
         btnListViewMulti.setGravity(Gravity.CENTER);
@@ -153,7 +154,8 @@ public class MainActivity extends Activity {
         });
         main.addView(btnListViewMulti);
 
-        //6. SQLite
+
+        //6. Review: SQLite
         Button btnToDB = new Button(this);
         btnToDB.setText(R.string.SQLiteDB);
         btnToDB.setGravity(Gravity.CENTER);
@@ -167,7 +169,8 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToDB);
 
-        //7. WebView with close button
+
+        //7. Review: WebView with close button
         Button btnToWebView = new Button(this);
         btnToWebView.setText(R.string.goWebView);
         btnToWebView.setGravity(Gravity.CENTER);
@@ -180,6 +183,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToWebView);
+
 
         //8. Fragment
         Button btnToFragment = new Button(this);
