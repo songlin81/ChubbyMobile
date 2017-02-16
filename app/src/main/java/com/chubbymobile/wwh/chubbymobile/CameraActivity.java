@@ -33,7 +33,6 @@ public class CameraActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // 显示界面
         setContentView(R.layout.activity_camera);
 
         layout = this.findViewById(R.id.buttonLayout);
@@ -89,8 +88,7 @@ public class CameraActivity extends Activity {
                 bundle = new Bundle();
                 bundle.putByteArray("bytes", data); //将图片字节数据保存在bundle当中，实现数据交换
                 saveToSDCard(data); // 保存图片到sd卡中
-                Toast.makeText(getApplicationContext(), R.string.success,
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.success, Toast.LENGTH_SHORT).show();
                 camera.startPreview(); // 拍完照后，重新开始预览
 
             } catch (Exception e) {
@@ -108,8 +106,7 @@ public class CameraActivity extends Activity {
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss"); // 格式化时间
         String filename = format.format(date) + ".jpg";
-        File fileFolder = new File(Environment.getExternalStorageDirectory()
-                + "/finger/");
+        File fileFolder = new File(Environment.getExternalStorageDirectory() + "/finger/");
         if (!fileFolder.exists()) { // 如果目录不存在，则创建一个名为"finger"的目录
             fileFolder.mkdir();
         }
