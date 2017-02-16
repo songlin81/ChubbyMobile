@@ -200,7 +200,7 @@ public class MainActivity extends Activity {
         main.addView(btnToFragment);
 
 
-        //9. Image Viewer
+        //9. Review: Image Viewer
         Button btnToImage = new Button(this);
         btnToImage.setText(R.string.goImage);
         btnToImage.setGravity(Gravity.CENTER);
@@ -438,7 +438,7 @@ public class MainActivity extends Activity {
         });
         main.addView(btnToPull);
 
-        
+
         //21. Send SMS
         Button btnToSendSMS = new Button(this);
         btnToSendSMS.setText(R.string.goSendSMS);
