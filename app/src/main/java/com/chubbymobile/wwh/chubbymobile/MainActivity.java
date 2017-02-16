@@ -476,7 +476,8 @@ public class MainActivity extends Activity {
         main.addView(btnToPhoto);
 
 
-        //24 timer for delay
+        //24. review: to demonstrate recurring task using Handler & Runnable
+        //    updating UI control.
         Button btnToTimer = new Button(this);
         btnToTimer.setText(R.string.goTimer);
         btnToTimer.setGravity(Gravity.CENTER);
