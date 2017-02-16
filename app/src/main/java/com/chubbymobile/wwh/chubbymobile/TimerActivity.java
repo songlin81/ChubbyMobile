@@ -5,24 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.TextView;
 
 public class TimerActivity extends Activity {
 
     private int mInterval = 5000; // 5 seconds by default, can be changed later
     private Handler mHandler;
-    private int i=0;
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
 
@@ -36,7 +30,16 @@ public class TimerActivity extends Activity {
                 super.handleMessage(msg);
             }
         };
+
         startRepeatingTask();
+    }
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
     }
 
     @Override
@@ -65,14 +68,6 @@ public class TimerActivity extends Activity {
         b.putString("init", (""+(i++)));
         m.setData(b);
         mHandler.sendMessage(m);
-    }
-
-    void startRepeatingTask() {
-        mStatusChecker.run();
-    }
-
-    void stopRepeatingTask() {
-        mHandler.removeCallbacks(mStatusChecker);
     }
 
     @Override
