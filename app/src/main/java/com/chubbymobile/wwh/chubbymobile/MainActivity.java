@@ -23,6 +23,7 @@ import java.util.jar.Manifest;
 
 public class MainActivity extends Activity {
 
+    //1.
     int[] images = new int[]{
             R.drawable.angry,
             R.drawable.sad,
@@ -43,7 +44,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
         LinearLayout main = (LinearLayout) findViewById(R.id.root);
 
-        //1. Display images in rotation.
+
+        //1. Review: images in rotation.
         final ImageView image = new ImageView(this);
         image.setImageResource(images[0]);
         image.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,8 @@ public class MainActivity extends Activity {
         });
         main.addView(image);
 
-        //2. Display time.
+
+        //2. Review: Display time.
         Button btn = new Button(this);
         btn.setText(R.string.ok);
         btn.setGravity(Gravity.CENTER);
@@ -69,6 +72,7 @@ public class MainActivity extends Activity {
         });
         main.addView(show);
         main.addView(btn);
+
 
         //3. Pass data across activities, draw view and keep data in SharedPreferences.
         Button btnToSub = new Button(this);
@@ -476,7 +480,7 @@ public class MainActivity extends Activity {
         main.addView(btnToPhoto);
 
 
-        //24. review: to demonstrate recurring task using Handler & Runnable
+        //24. Review: to demonstrate recurring task using Handler & Runnable
         //    updating UI control.
         Button btnToTimer = new Button(this);
         btnToTimer.setText(R.string.goTimer);
