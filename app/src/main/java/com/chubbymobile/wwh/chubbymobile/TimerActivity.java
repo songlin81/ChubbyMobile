@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class TimerActivity extends Activity {
 
-    private int mInterval = 5000; // 5 seconds by default, can be changed later
+    private int mInterval = 5000;
     private Handler mHandler;
     private int i = 0;
 
