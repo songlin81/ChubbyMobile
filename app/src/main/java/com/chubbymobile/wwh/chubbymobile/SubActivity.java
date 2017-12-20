@@ -19,6 +19,7 @@ public class SubActivity extends Activity {
         setContentView(R.layout.sub_main);
         LinearLayout root = (LinearLayout) findViewById(R.id.root);
 
+        // pass value from intent.putExtra
         tv = (TextView) findViewById(R.id.tv);
         Intent intent =getIntent();
         String first = intent.getStringExtra("et1");
@@ -33,6 +34,7 @@ public class SubActivity extends Activity {
         mEditor.commit();
 
         final DrawView draw = new DrawView(this);
+        draw.setBackgroundResource(R.drawable.angry);
         draw.setMinimumWidth(300);
         draw.setMinimumHeight(500);
         root.addView(draw);

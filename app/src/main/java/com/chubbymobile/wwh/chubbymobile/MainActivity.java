@@ -23,7 +23,7 @@ import java.util.jar.Manifest;
 
 public class MainActivity extends Activity {
 
-    //1.
+    //1. Image display in rotation.
     int[] images = new int[]{
             R.drawable.angry,
             R.drawable.sad,
@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
             R.drawable.surprise
     };
     int currentImg = 0;
+
 
     //5.
     CharSequence[] items = {"Toronto", "Beijing", "New York"};
@@ -45,8 +46,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
         LinearLayout main = (LinearLayout) findViewById(R.id.root);
 
-
-        //1. Review: images in rotation.
+        //1. Review.
         final ImageView image = new ImageView(this);
         image.setImageResource(images[0]);
         image.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +56,6 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(image);
-
 
         //2. Review: Display time.
         Button btn = new Button(this);
@@ -74,8 +73,9 @@ public class MainActivity extends Activity {
         main.addView(show);
         main.addView(btn);
 
-
-        //3. Review: Pass data across activities, draw view and keep data in SharedPreferences.
+        //3.Review: Pass data across activities,
+        //  draw view,
+        //  and keep data in SharedPreferences.
         Button btnToSub = new Button(this);
         btnToSub.setText(R.string.goDraw);
         btnToSub.setGravity(Gravity.CENTER);
@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
             }
         });
         main.addView(btnToSub);
+
 
 
         // 4. Review: Dialog
